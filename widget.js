@@ -50,6 +50,8 @@ class VastaricAd extends HTMLElement {
     }
 
     render(ad) {
+        const badgeText = ad.badge || 'Реклама';
+
         this.shadowRoot.innerHTML = `
             <style>
                 :host {
@@ -102,6 +104,18 @@ class VastaricAd extends HTMLElement {
                     border-radius: 6px;
                     border: 1px solid rgba(255, 255, 255, 0.08);
                 }
+                .badge-inline {
+                    display: inline-block;
+                    background: #1f2937;
+                    color: #9ca3af;
+                    font-size: 10px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.6px;
+                    padding: 3px 7px;
+                    border-radius: 5px;
+                    margin-bottom: 8px;
+                }
                 .body {
                     padding: 16px;
                 }
@@ -143,18 +157,30 @@ class VastaricAd extends HTMLElement {
 
             <a class="card" href="${ad.url}" target="_blank" rel="noopener noreferrer">
                 ${ad.image ? `
-                    <div class="media">
+                    <div class="media" id="media-box">
                         <img src="${ad.image}" alt="${ad.title}" loading="lazy">
-                        <span class="badge">${ad.badge || 'Реклама'}</span>
+                        <span class="badge">${badgeText}</span>
                     </div>
                 ` : ''}
                 <div class="body">
+                    <span class="badge-inline" id="fallback-badge" style="display: ${ad.image ? 'none' : 'inline-block'};">${badgeText}</span>
                     <h4 class="title">${ad.title}</h4>
                     <p class="text">${ad.text}</p>
                     <div class="cta">${ad.cta || 'Подробнее'} ↗</div>
                 </div>
             </a>
         `;
+
+        // Перехват ошибки загрузки картинки
+        const img = this.shadowRoot.querySelector('img');
+        if (img) {
+            img.addEventListener('error', () => {
+                const mediaBox = this.shadowRoot.getElementById('media-box');
+                const fallbackBadge = this.shadowRoot.getElementById('fallback-badge');
+                if (mediaBox) mediaBox.remove();
+                if (fallbackBadge) fallbackBadge.style.display = 'inline-block';
+            });
+        }
     }
 }
 
