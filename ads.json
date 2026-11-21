@@ -1,24 +1,24 @@
 [
   {
-    "id": "kristall_comm",
-    "title": "Kristall Community",
-    "text": "Сообщество разработчиков и игроков. Свежие новости, инсайды и общение.",
-    "image": "https://github.io",
-    "cta": "Перейти в канал",
-    "url": "https://github.io",
-    "badge": "Партнёр",
-    "weight": 50,
+    "id": "archive",
+    "title": "Vastaric Archive",
+    "text": "Ищите инструкции, статьи и гайды во вселенной Vastaric.",
+    "image": "https://github.com/KristallC/Community/blob/main/preview.png?raw=true",
+    "cta": "Перейти",
+    "url": "https://kristallc.github.io/Archive/",
+    "badge": "Проект Vastaric",
+    "weight": 5,
     "active": true
   },
   {
-    "id": "war4_promo",
-    "title": "War 4 — Командный PvP",
-    "text": "Динамичные сражения в Roblox. Собирай клан и захватывай арену!",
-    "image": "https://github.io",
-    "cta": "Играть сейчас",
-    "url": "https://github.io",
-    "badge": "Проект Vastaric",
-    "weight": 30,
+    "id": "max",
+    "title": "Канал Vastaric в MAX",
+    "text": "Свежие новости проекта и прочее.",
+    "image": "https://github.com/KristallC/Community/blob/main/preview.png?raw=true",
+    "cta": "Перейти",
+    "url": "https://max.ru/join/QDrD5L_pHnzSSzXfVB5rnBnu8Hh9Vn0X8IVQMDAHbcg",
+    "badge": "Канал",
+    "weight": 3,
     "active": true
   }
 ]
