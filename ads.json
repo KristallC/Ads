@@ -1,0 +1,24 @@
+[
+  {
+    "id": "kristall_comm",
+    "title": "Kristall Community",
+    "text": "Сообщество разработчиков и игроков. Свежие новости, инсайды и общение.",
+    "image": "https://github.io",
+    "cta": "Перейти в канал",
+    "url": "https://github.io",
+    "badge": "Партнёр",
+    "weight": 50,
+    "active": true
+  },
+  {
+    "id": "war4_promo",
+    "title": "War 4 — Командный PvP",
+    "text": "Динамичные сражения в Roblox. Собирай клан и захватывай арену!",
+    "image": "https://github.io",
+    "cta": "Играть сейчас",
+    "url": "https://github.io",
+    "badge": "Проект Vastaric",
+    "weight": 30,
+    "active": true
+  }
+]
