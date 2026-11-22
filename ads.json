@@ -4,21 +4,21 @@
     "title": "Vastaric Archive",
     "text": "Ищите инструкции, статьи и гайды во вселенной Vastaric.",
     "image": "https://github.com/KristallC/Community/blob/main/preview.png?raw=true",
-    "cta": "Перейти",
+    "cta": "Открыть",
     "url": "https://kristallc.github.io/Archive/",
     "badge": "Проект Vastaric",
-    "weight": 5,
+    "weight": 1,
     "active": true
   },
   {
     "id": "max",
-    "title": "Канал Vastaric в MAX",
+    "title": "Канал Vastaric в MAX!",
     "text": "Свежие новости проекта и прочее.",
     "image": "https://github.com/KristallC/Community/blob/main/preview.png?raw=true",
     "cta": "Перейти",
     "url": "https://max.ru/join/QDrD5L_pHnzSSzXfVB5rnBnu8Hh9Vn0X8IVQMDAHbcg",
     "badge": "Канал",
-    "weight": 3,
+    "weight": 1,
     "active": true
   }
 ]
