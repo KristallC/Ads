@@ -5,7 +5,7 @@ class VastaricAd extends HTMLElement {
     }
 
     async connectedCallback() {
-        const src = this.getAttribute('src') || 'https://github.io';
+        const src = this.getAttribute('src') || 'https://kristallc.github.io/Ads/ads.json';
 
         try {
             const response = await fetch(`${src}?v=${Math.floor(Date.now() / 60000)}`);
