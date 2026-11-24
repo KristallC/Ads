@@ -5,18 +5,15 @@ class VastaricAd extends HTMLElement {
     }
 
     async connectedCallback() {
-        // Адрес JSON
-        const src = this.getAttribute('src') || 'https://kristallc.github.io/Ads/ads.json';
+        const src = this.getAttribute('src') || 'https://github.io';
 
         try {
-            // Добавляем ?v=timestamp, чтобы GitHub Pages не отдавал старый кэш при обновлении рекламы
             const response = await fetch(`${src}?v=${Math.floor(Date.now() / 60000)}`);
             if (!response.ok) return;
 
             const ads = await response.json();
             const activeAds = ads.filter(ad => ad.active && ad.weight > 0);
 
-            // Если активной рекламы нет — просто ничего не рисуем, блок остаётся невидимым
             if (activeAds.length === 0) return;
 
             const selectedAd = this.pickAd(activeAds);
@@ -27,7 +24,6 @@ class VastaricAd extends HTMLElement {
     }
 
     pickAd(ads) {
-        // Стараемся не показывать одну и ту же рекламу два раза подряд при обновлении страницы
         const lastId = sessionStorage.getItem('vastaric_last_ad');
         let pool = ads;
         if (ads.length > 1 && lastId) {
@@ -35,7 +31,6 @@ class VastaricAd extends HTMLElement {
             if (filtered.length > 0) pool = filtered;
         }
 
-        // Взвешенный рандом (Weighted Random)
         const totalWeight = pool.reduce((sum, ad) => sum + ad.weight, 0);
         let random = Math.random() * totalWeight;
 
@@ -46,7 +41,7 @@ class VastaricAd extends HTMLElement {
             }
             random -= ad.weight;
         }
-        return pool[0];
+        return pool;
     }
 
     render(ad) {
@@ -157,30 +152,19 @@ class VastaricAd extends HTMLElement {
 
             <a class="card" href="${ad.url}" target="_blank" rel="noopener noreferrer">
                 ${ad.image ? `
-                    <div class="media" id="media-box">
-                        <img src="${ad.image}" alt="${ad.title}" loading="lazy">
+                    <div class="media">
+                        <img src="${ad.image}" alt="${ad.title}">
                         <span class="badge">${badgeText}</span>
                     </div>
                 ` : ''}
                 <div class="body">
-                    <span class="badge-inline" id="fallback-badge" style="display: ${ad.image ? 'none' : 'inline-block'};">${badgeText}</span>
+                    ${!ad.image ? `<span class="badge-inline">${badgeText}</span>` : ''}
                     <h4 class="title">${ad.title}</h4>
                     <p class="text">${ad.text}</p>
                     <div class="cta">${ad.cta || 'Подробнее'} ↗</div>
                 </div>
             </a>
         `;
-
-        // Перехват ошибки загрузки картинки
-        const img = this.shadowRoot.querySelector('img');
-        if (img) {
-            img.addEventListener('error', () => {
-                const mediaBox = this.shadowRoot.getElementById('media-box');
-                const fallbackBadge = this.shadowRoot.getElementById('fallback-badge');
-                if (mediaBox) mediaBox.remove();
-                if (fallbackBadge) fallbackBadge.style.display = 'inline-block';
-            });
-        }
     }
 }
 
