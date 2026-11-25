@@ -14,7 +14,10 @@ class VastaricAd extends HTMLElement {
             const ads = await response.json();
             const activeAds = ads.filter(ad => ad.active && ad.weight > 0);
 
-            if (activeAds.length === 0) return;
+            if (activeAds.length === 0) {
+                console.info('[Vastaric Ads] Нет активных объявлений.')
+                return;
+            }
 
             const selectedAd = this.pickAd(activeAds);
             this.render(selectedAd);
@@ -41,7 +44,7 @@ class VastaricAd extends HTMLElement {
             }
             random -= ad.weight;
         }
-        return pool;
+        return pool[0];
     }
 
     render(ad) {
