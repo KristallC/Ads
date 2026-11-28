@@ -20,5 +20,16 @@
     "badge": "Канал",
     "weight": 1,
     "active": true
+  },
+  {
+    "id": "math_runner",
+    "title": "Math Runner",
+    "text": "Проверь свою скорость вычислений в этом математическом тренажёре!",
+    "image": "https://github.com/KristallC/Projects/blob/main/Math%20Runner/screenshots/20261128_130620.jpg?raw=true",
+    "cta": "Скачать сейчас",
+    "url": "https://kristallc.github.io/Community/project-template.html?project=com.vastaric.mathrunner",
+    "badge": "Игра",
+    "weight": 1,
+    "active": true
   }
 ]
